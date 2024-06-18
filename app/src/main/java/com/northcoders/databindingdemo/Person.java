@@ -5,9 +5,15 @@ import androidx.databinding.Bindable;
 
 public class Person extends BaseObservable{
 
-    public String name;
-    public int age;
-    public String email;
+    private String name;
+    private String email;
+    private int age;
+
+    public Person(String name, String email, int age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
 
     @Bindable
     public String getName() {
@@ -20,16 +26,6 @@ public class Person extends BaseObservable{
     }
 
     @Bindable
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-        notifyPropertyChanged(BR.age);
-    }
-
-    @Bindable
     public String getEmail() {
         return email;
     }
@@ -39,12 +35,13 @@ public class Person extends BaseObservable{
         notifyPropertyChanged(BR.email);
     }
 
-    public Person(String name, int age, String email) {
-        this.name = name;
-        this.age = age;
-        this.email = email;
+    @Bindable
+    public int getAge() {
+        return age;
     }
 
-    public Person() {
+    public void setAge(int age) {
+        this.age = age;
+        notifyPropertyChanged(BR.age);
     }
 }
